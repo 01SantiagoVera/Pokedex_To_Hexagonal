@@ -5,7 +5,7 @@ import com.bootcamp_2024_1.Pokedex_To_Hexagonal.domain.model.Pokemon;
 import java.util.List;
 
 public interface IPokemonServicePort {
-    void addPokemon(Pokemon pokemon);
+    void savePokemon(Pokemon pokemon);
 
     List<Pokemon> getAllPokemon();
 

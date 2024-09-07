@@ -15,7 +15,7 @@ public class photoUseCase implements IPhotoServicePort {
     }
 
     @Override
-    public Photo save(Photo photo) {
+    public Photo savePhoto(Photo photo) {
         return photoPersistencePort.save(photo);
     }
 

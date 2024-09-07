@@ -15,7 +15,7 @@ public class TypeUseCase implements ITypeServicePort {
     }
 
     @Override
-    public Type save(Type type) {
+    public Type saveType(Type type) {
         return typepersistencePort.save(type);
     }
 

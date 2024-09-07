@@ -3,12 +3,12 @@ package com.bootcamp_2024_1.Pokedex_To_Hexagonal.domain.model;
 public class Pokemon {
 
     private Long id;
-    private String number;
+    private Long number;
     private String name;
     private Long TypeId;
     private String PhotoId;
 
-    public Pokemon(Long id, String number, String name, Long typeId, String photoId) {
+    public Pokemon(Long id, Long number, String name, Long typeId, String photoId) {
         this.id = id;
         this.number = number;
         this.name = name;
@@ -28,7 +28,7 @@ public class Pokemon {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 

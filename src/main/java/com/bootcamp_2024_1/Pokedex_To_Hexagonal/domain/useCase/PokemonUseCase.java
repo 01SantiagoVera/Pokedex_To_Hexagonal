@@ -14,7 +14,7 @@ public class PokemonUseCase implements IPokemonServicePort {
         this.pokemonPersistencePort = pokemonPersistencePort;
     }
     @Override
-    public void addPokemon(Pokemon pokemon) {
+    public void savePokemon(Pokemon pokemon) {
         pokemonPersistencePort.savePokemon(pokemon);
     }
 

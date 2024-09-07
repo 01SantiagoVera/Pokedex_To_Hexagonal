@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ITypeServicePort {
 
-    Type save(Type type);
+    Type saveType(Type type);
     List<Type> getAllType();
     Type getTypeById(long id);
 

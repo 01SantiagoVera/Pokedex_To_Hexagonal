@@ -33,7 +33,7 @@ public interface PokedexResponseMapper {
         return Base64.getEncoder().encodeToString(byteArrayPhoto);
     }
 
-    default List<PokedexResponse> toPokedexList(List<Pokemon> pokemonList, List<Type> typeList, List<Photo> photoList) {
+    default List<PokedexResponse> toResponseList(List<Pokemon> pokemonList, List<Type> typeList, List<Photo> photoList) {
         return pokemonList.stream()
                 .map(pokemon -> {
                     PokedexResponse pokedexResponse = new PokedexResponse();
