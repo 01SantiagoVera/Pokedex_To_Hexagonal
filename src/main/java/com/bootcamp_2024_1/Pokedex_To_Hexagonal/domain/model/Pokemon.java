@@ -24,7 +24,7 @@ public class Pokemon {
         this.id = id;
     }
 
-    public String getNumber() {
+    public long getNumber() {
         return number;
     }
 

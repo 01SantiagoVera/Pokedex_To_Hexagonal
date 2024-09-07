@@ -14,21 +14,23 @@ import org.mapstruct.factory.Mappers;
 import java.util.Base64;
 import java.util.List;
 
-@Mapper(componetModel = "spring",
+@Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        unmappedSourcePolicy = ReportingPolicy.IGNORE
-        uses = {TypeDtoMapper.class} )
-public interface PokedexResponseMapper {
-    TypeDtoMapper INSTACE  = Mappers.getMapper(TypeDtoMapper.class);
+        unmappedSourcePolicy = ReportingPolicy.IGNORE,
+        uses = {TypeDtoMapper.class})
 
-    @Mapper(target ="types.firstType", source = "firstType")
-    @Mapper(target ="types.secondType", source = "secondType")
+public interface PokedexResponseMapper {
+    TypeDtoMapper INSTANCE = Mappers.getMapper(TypeDtoMapper.class);
+
+
+    @Mapping(target = "types.firstType", source = "firstType")
+    @Mapping(target = "types.secondType", source = "secondType")
     @Mapping(target = "photo", qualifiedByName = "byteArrayToBase64")
     PokedexResponse toResponse(Pokemon pokemon, TypeDto typeDto, Photo photo);
 
     @Named("byteArrayToBase64")
-    static byte[] byteArrayToBase64(byte[] byteArrayPhoto) {
-        return Base64.getEncoder().encode(byteArrayPhoto);
+    static String byteArrayToBase64(byte[] byteArrayPhoto) {
+        return Base64.getEncoder().encodeToString(byteArrayPhoto);
     }
 
     default List<PokedexResponse> toPokedexList(List<Pokemon> pokemonList, List<Type> typeList, List<Photo> photoList) {
@@ -37,8 +39,8 @@ public interface PokedexResponseMapper {
                     PokedexResponse pokedexResponse = new PokedexResponse();
                     pokedexResponse.setNumber(pokemon.getNumber());
                     pokedexResponse.setName(pokemon.getName());
-                    pokedexResponse.getType(INSTACE.toDto(typeList.stream().filter(type -> type.getId().equals(pokemon.getTypeId())).findFirst().orElse(null)));
-                    pokedexResponse.getPhoto(byteArrayToBase64(photoList.stream().filter(photo -> photo.getId().equals(pokemon.getPhotoId())).findFirst().orElse(null).getImage()));
+                    pokedexResponse.setType(INSTANCE.toDto(typeList.stream().filter(type -> type.getId().equals(pokemon.getTypeId())).findFirst().orElse(null)));
+                    pokedexResponse.setPhoto(byteArrayToBase64(photoList.stream().filter(photo -> photo.getId().equals(pokemon.getPhotoId())).findFirst().orElse(null).getImage()));
                     return pokedexResponse;
                 }).toList();
     }

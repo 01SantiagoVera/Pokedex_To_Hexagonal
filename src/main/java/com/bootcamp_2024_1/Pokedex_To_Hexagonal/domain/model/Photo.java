@@ -2,18 +2,18 @@ package com.bootcamp_2024_1.Pokedex_To_Hexagonal.domain.model;
 
 public class Photo {
 
-    private int id;
+    private String id;
     private byte[] image;
 
-    public Photo(int id, byte[] image) {
+    public Photo(String id, byte[] image) {
         this.id = id;
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public byte[] getImage() {
